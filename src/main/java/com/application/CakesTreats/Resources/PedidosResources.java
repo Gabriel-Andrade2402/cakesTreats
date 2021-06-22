@@ -19,9 +19,6 @@ public class PedidosResources {
 	@PostMapping(value = "/novo")
 	public ResponseEntity<List<Pedido>> inserirPedido(@RequestBody String format) {
 		List<Pedido> lista= PedidosService.criarPedido(format);
-		for(Pedido p:lista) {
-			Logger.getLogger(PedidosResources.class.getName()).log(Level.INFO, p);
-		}
 		return ResponseEntity.ok().body(lista);
 	}
 	@PostMapping(value="/delete")
