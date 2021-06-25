@@ -17,33 +17,30 @@ import com.application.CakesTreats.Services.UsuariosService;
 public class UsuariosResources {
 
 	@PostMapping(value = "/logar")
-	public ResponseEntity<String> login(@RequestBody Usuarios usuario) {
+	public ResponseEntity<Usuarios> login(@RequestBody Usuarios usuario) {
 		Usuarios usu = UsuariosService.Login(usuario.getEmail(), usuario.getSenha());
 		if (usu != null) {
-			return ResponseEntity.ok().body("email:" + usu.getEmail() + ",senha:" + usu.getSenha() + ",nome:"
-					+ usu.getNome() + ",telefone:" + usu.getTelefone());
+			return ResponseEntity.ok().body(usu);
 		}else {
-			return ResponseEntity.ok().body("negado");
+			return ResponseEntity.ok().body(null);
 		}
 	}
 	@PostMapping(value="/cadastrar")
-	public ResponseEntity<String> cadastrar(@RequestBody Usuarios usuario) {
+	public ResponseEntity<Usuarios> cadastrar(@RequestBody Usuarios usuario) {
 		Usuarios usu = UsuariosService.cadastrar(usuario.getEmail(),usuario.getSenha(), usuario.getNome(), usuario.getTelefone());
 		if (usu != null) {
-			return ResponseEntity.ok().body("email:" + usu.getEmail() + ",senha:" + usu.getSenha() + ",nome:"
-					+ usu.getNome() + ",telefone:" + usu.getTelefone());
+			return ResponseEntity.ok().body(usu);
 		}else {
-			return ResponseEntity.ok().body("usuario existente");
+			return ResponseEntity.ok().body(null);
 		}
 	}
 	@PostMapping(value="/editar")
-	public ResponseEntity<String> editar(@RequestBody Usuarios usuario) {
+	public ResponseEntity<Usuarios> editar(@RequestBody Usuarios usuario) {
 		Usuarios usu = UsuariosService.atualizar(usuario.getEmail(),usuario.getSenha(), usuario.getNome(), usuario.getTelefone());
 		if (usu != null) {
-			return ResponseEntity.ok().body("email:" + usu.getEmail() + ",senha:" + usu.getSenha() + ",nome:"
-					+ usu.getNome() + ",telefone:" + usu.getTelefone());
+			return ResponseEntity.ok().body(usu);
 		}else {
-			return ResponseEntity.ok().body("Ocorreu um erro");
+			return ResponseEntity.ok().body(null);
 		}
 	}
 	@GetMapping(value="/todos")

@@ -25,7 +25,10 @@ public class PedidosService {
 	public static Pedido procurarPorId(long id) {
 		return repository.findById(id).get();
 	}
-
+	public static List<Pedido> recuperarPedidosUser(Usuarios user){
+		Usuarios usuario=UsuariosService.buscarUsuario(user.getEmail());
+		return repository.retornarListaPorUsuario(usuario.getId());
+	}
 	public static List<Pedido> criarPedido(String format) {
 		try {
 			java.util.Date dataNew = new java.util.Date();

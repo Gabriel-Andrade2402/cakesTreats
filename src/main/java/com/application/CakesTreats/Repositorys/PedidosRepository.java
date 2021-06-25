@@ -14,5 +14,6 @@ import com.application.CakesTreats.Entitys.Pedido;
 public interface PedidosRepository extends JpaRepository<Pedido, Long>{
 	@Query(value = "SELECT * FROM pedidos WHERE data_pedida = :data AND usuario_id = :usuario", nativeQuery=true)
 	List<Pedido> retornaListaPorData(@Param("data") String data,@Param("usuario")long id);
-	
+	@Query(value="SELECT * FROM pedidos WHERE usuario_id = :usuario", nativeQuery=true)
+	List<Pedido> retornarListaPorUsuario(@Param("usuario")long id);
 }
