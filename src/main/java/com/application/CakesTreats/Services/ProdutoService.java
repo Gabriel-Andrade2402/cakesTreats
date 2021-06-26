@@ -1,5 +1,7 @@
 package com.application.CakesTreats.Services;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.application.CakesTreats.Entitys.Produto;
@@ -17,11 +19,17 @@ public class ProdutoService {
 		p.setSabor(SaboresService.retornaSaborPorNome(p.getSabor().getNome()));
 		return repository.retonarStatusDoProduto(p.getNome(),p.getSabor());
 	}
+	public static void criarProduto(Produto p) {
+		repository.save(p);
+	}
 	public static Produto procurarPorId(long id) {
 		return repository.findById(id).get();
 	}
 	public static Produto retornarProdutoPorNomeESabor(String nome,Sabores sabor) {
 		return repository.retonarProdutoPorNomeESabor(nome, sabor);
+	}
+	public static List<Produto> retornarTodosProdutos(){
+		return repository.findAll();
 	}
 
 }

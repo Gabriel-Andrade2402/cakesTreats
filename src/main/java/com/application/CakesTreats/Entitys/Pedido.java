@@ -39,7 +39,6 @@ public class Pedido implements Serializable {
 		this.dataEntregue = dataEntregue;
 		this.produto = produto;
 	}
-
 	public Pedido() {
 	}
 

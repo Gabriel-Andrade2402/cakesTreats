@@ -15,4 +15,7 @@ public class SaboresService {
 	public static Sabores retornaSaborPorNome(String nome) {
 		return repository.retonarSaborPorNome(nome);
 	}
+	public static void criarSabor(Sabores sabor) {
+		repository.save(sabor);
+	}
 }

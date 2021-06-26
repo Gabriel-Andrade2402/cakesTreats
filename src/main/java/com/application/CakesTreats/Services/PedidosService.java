@@ -57,7 +57,10 @@ public class PedidosService {
 			return false;
 		}
 	}
-	
+	/*Os metodos a seguir estão recebendo e manipulando o seguinte formato
+	 			{email:gabriel@gmail.com}{bol1:morango}
+	 
+	  */
 	// Recuperar o formato enviado para reconhecer um usuario
 	public static Usuarios retornaUsuarioNoFormat(String format) {
 		String[] separarPorTipo = format.split("}");
